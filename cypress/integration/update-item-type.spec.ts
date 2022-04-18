@@ -1,0 +1,7 @@
+/*
+    Given that there is an item added
+    When the user clicks on PEN button
+    And the user changes the item type
+    Then the type name is updated in list view
+    And The type amount is updated on INSIGHTS view
+*/

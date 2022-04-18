@@ -1,0 +1,7 @@
+/*
+    Given that there are more than one item added
+    When the user clicks on CAN button
+    And the user confirms the delete action
+    Then the Items is not displayed on list view
+    And The insight information is updated
+*/
