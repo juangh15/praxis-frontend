@@ -34,14 +34,6 @@ describe("Deleting Item", () => {
   // Actions
 
   it("Given that there are more than one item added", () => {
-    //item1
-    itemsPage.clickOnAddItemMenu();
-    itemsPage.fillOutItemName(expectedItemName);
-    itemsPage.fillOutItemSellIn(expectedItemSellIn);
-    itemsPage.fillOutItemQuality(expectedItemQuality);
-    itemsPage.openItemTypeSelector();
-    itemsPage.selectItemNormalOption();
-    itemsPage.clickOnAddItem();
     //item2
     itemsPage.clickOnAddItemMenu();
     itemsPage.fillOutItemName(expectedItemName2);
@@ -50,6 +42,16 @@ describe("Deleting Item", () => {
     itemsPage.openItemTypeSelector();
     itemsPage.selectItemNormalOption();
     itemsPage.clickOnAddItem();
+    //item1
+    itemsPage.clickOnAddItemMenu();
+    itemsPage.fillOutItemName(expectedItemName);
+    itemsPage.fillOutItemSellIn(expectedItemSellIn);
+    itemsPage.fillOutItemQuality(expectedItemQuality);
+    itemsPage.openItemTypeSelector();
+    itemsPage.selectItemNormalOption();
+    itemsPage.clickOnAddItem();
+    
+    
   });
 
   it("When the user clicks on CAN button", () => {
@@ -58,6 +60,7 @@ describe("Deleting Item", () => {
 
   it("And the user confirms the delete action", () => {
     itemsPage.clickOnDeleteButton();
+    cy.wait(1000);
   });
   // Asserts   TODO
 

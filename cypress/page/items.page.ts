@@ -19,12 +19,12 @@ class ItemsPage {
     constructor() {
         this.indexItemsPageURL = 'http://localhost:4200/list'
         this.menuAddItemButton = '.list-add-button';
-        this.itemNameField = '#mat-input-0';
-        this.itemSellInField = '#mat-input-1';
-        this.itemQualityField = '#mat-input-2';
-        this.itemTypeSelector = '#mat-select-0';
-        this.itemTypeNormalOption = '#mat-option-1';
-        this.itemTypeAgedOption = '#mat-option-2';
+        this.itemNameField = '[formcontrolname="name"]';
+        this.itemSellInField = '[formcontrolname="sellIn"]';
+        this.itemQualityField = '[formcontrolname="quality"]';
+        this.itemTypeSelector = '[formcontrolname="type"]';
+        this.itemTypeNormalOption = '[ng-reflect-value="NORMAL"]';
+        this.itemTypeAgedOption = '[ng-reflect-value="AGED"]';
         this.addItemButton = "[data-automation=\"item-form-confirm-button\"]";
         this.updateItemButton = "[data-automation=\"item-form-confirm-button\"]";
         this.canButton = ".list-container > div:nth-child(3) .list-col:last-child mat-icon:nth-child(2)";
