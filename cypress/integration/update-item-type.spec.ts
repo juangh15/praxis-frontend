@@ -46,4 +46,14 @@ describe("Updating Item", () => {
   });
 
   // Asserts   TODO
+
+  it("Then the type name is updated in list view", () => {
+    cy.get(".list-container > div:nth-child(3) .list-col:nth-child(4)").should("have.text", " AGED ");
+  });
+
+  it("And The type amount is updated on INSIGHTS view", () => {
+    itemsPage.clickOnInsightsButton();
+    cy.get("[data-automation=\"item-type-normal-value\"]").should("have.text", " 0 ");
+    cy.get("[data-automation=\"item-type-aged-value\"]").should("have.text", " 1 ");
+  });
 });
