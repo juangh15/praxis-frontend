@@ -29,7 +29,7 @@ class ItemsPage {
         this.updateItemButton = "[data-automation=\"item-form-confirm-button\"]";
         this.canButton = ".list-container > div:nth-child(3) .list-col:last-child mat-icon:nth-child(2)";
         this.deleteButton = "[data-automation=\"delete-dialog-confirm-button\"]"
-        this.editButton = "#mat-option-1";
+        this.editButton = '[data-automation="list-edit-button"]';
         this.insightsButton = "button.list-insights-button";
     }
 
