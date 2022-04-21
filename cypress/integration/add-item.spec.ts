@@ -51,6 +51,12 @@ describe("Adding Items", () => {
   });
 
   it("And The information set is displayed according to added in creation step", () => {
-    cy.get("[data-automation=\"list-insights-button\"]").should("have.text", " Insights ");
+    cy.get('[data-automation="list-item-row"]').last().find('div').should(($lista)=>{
+      expect($lista.eq(0), 'first item').to.contain('Chocorramo')
+      expect($lista.eq(1), 'second item').to.contain('30')
+      expect($lista.eq(2), 'third item').to.contain('20')
+      expect($lista.eq(3), 'fourth item').to.contain('NORMAL')
+
+    })
   });
 });

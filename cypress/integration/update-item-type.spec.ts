@@ -19,6 +19,9 @@ describe("Updating Item", () => {
   let expectedItemQuality: string;
 
   before(() => {
+    expectedItemName = "Chocorramo";
+    expectedItemSellIn = "30";
+    expectedItemQuality = "20";
     itemsPage = new ItemsPage();
     itemsPage.visitItemsPage();
   });
@@ -48,7 +51,7 @@ describe("Updating Item", () => {
   // Asserts   TODO
 
   it("Then the type name is updated in list view", () => {
-    cy.get(".list-container > div:nth-child(3) .list-col:nth-child(4)").should("have.text", " AGED ");
+    cy.get(".list-container > div:nth-child(3) .list-col:nth-child(4)").should("have.text", "AGED");
   });
 
   it("And The type amount is updated on INSIGHTS view", () => {
