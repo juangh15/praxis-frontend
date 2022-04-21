@@ -61,6 +61,8 @@ describe("Updating Item", () => {
   });
 
   after(()=>{
+    itemsPage.clickOnGoBackInsightsButton();
+    cy.wait(500);
     itemsPage.clickOnCanButton();
     itemsPage.clickOnDeleteButton();
     cy.wait(1000);

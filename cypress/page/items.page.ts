@@ -14,6 +14,7 @@ class ItemsPage {
     private deleteButton: string;
     private editButton: string;
     private insightsButton: string;
+    private goBackInsightsButton: string;
 
 
     constructor() {
@@ -31,6 +32,7 @@ class ItemsPage {
         this.deleteButton = "[data-automation=\"delete-dialog-confirm-button\"]"
         this.editButton = '[data-automation="list-edit-button"]';
         this.insightsButton = "button.list-insights-button";
+        this.goBackInsightsButton = "data-automation=\"insights-go-back-button\"";
     }
 
     public visitItemsPage(): void {
@@ -87,6 +89,10 @@ class ItemsPage {
 
     public clickOnInsightsButton(): void {
       cy.get(this.insightsButton).click()
+    }
+
+    public clickOnGoBackInsightsButton(): void {
+      cy.get(this.goBackInsightsButton).click()
     }
 
 }

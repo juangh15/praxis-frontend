@@ -50,8 +50,8 @@ describe("Deleting Item", () => {
     itemsPage.openItemTypeSelector();
     itemsPage.selectItemNormalOption();
     itemsPage.clickOnAddItem();
-    
-    
+
+
   });
 
   it("When the user clicks on CAN button", () => {
@@ -68,4 +68,11 @@ describe("Deleting Item", () => {
     itemsPage.clickOnInsightsButton();
     cy.get("[data-automation=\"item-type-normal-value\"]").should("have.text", " 1 ");
   });
+
+  after(()=>{
+    cy.wait(1000);
+    itemsPage.clickOnCanButton();
+    itemsPage.clickOnDeleteButton();
+
+  })
 });
