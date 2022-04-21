@@ -70,7 +70,8 @@ describe("Deleting Item", () => {
   });
 
   after(()=>{
-    cy.wait(1000);
+    itemsPage.clickOnGoBackInsightsButton();
+    cy.wait(500);
     itemsPage.clickOnCanButton();
     itemsPage.clickOnDeleteButton();
 

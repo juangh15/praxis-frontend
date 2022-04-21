@@ -32,7 +32,7 @@ class ItemsPage {
         this.deleteButton = "[data-automation=\"delete-dialog-confirm-button\"]"
         this.editButton = '[data-automation="list-edit-button"]';
         this.insightsButton = "button.list-insights-button";
-        this.goBackInsightsButton = "data-automation=\"insights-go-back-button\"";
+        this.goBackInsightsButton = "[data-automation=\"insights-go-back-button\"]";
     }
 
     public visitItemsPage(): void {
