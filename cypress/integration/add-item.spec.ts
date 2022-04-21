@@ -59,4 +59,11 @@ describe("Adding Items", () => {
 
     })
   });
+
+  after(()=>{
+    itemsPage.clickOnCanButton();
+    itemsPage.clickOnDeleteButton();
+    cy.wait(1000);
+  })
+
 });

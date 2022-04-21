@@ -59,4 +59,10 @@ describe("Updating Item", () => {
     cy.get("[data-automation=\"item-type-normal-value\"]").should("have.text", " 0 ");
     cy.get("[data-automation=\"item-type-aged-value\"]").should("have.text", " 1 ");
   });
+
+  after(()=>{
+    itemsPage.clickOnCanButton();
+    itemsPage.clickOnDeleteButton();
+    cy.wait(1000);
+  })
 });
