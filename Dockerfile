@@ -1,10 +1,16 @@
-# Set the base image to Ubuntu
-FROM node:lts-alpine3.15
-COPY . .
+# Set the base image to node 14.19
+FROM node:14.19-alpine
+WORKDIR /app
+COPY / ./
+COPY package*.json ./
 
-ENV API_URL = 192.68.1.4:8080
+ENV API_URL=api-container
 
 # Add the packages
-RUN npm install
+RUN npm install -g @angular/cli@13.3.1 && \
+    npm install
 
-CMD ["npm", "start"]
+# Expose the default Gildedrose frontend port
+EXPOSE 4200
+
+ENTRYPOINT ["npm", "start"]
