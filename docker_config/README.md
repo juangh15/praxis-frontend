@@ -45,3 +45,8 @@ Wait a few minutes and the API will be exposed to the web address:
 http://localhost:4200
 
 If it is working correctly, when entering the previous address from a browser the gildedrose front will load.
+
+## Image of the frontend:
+
+The image builded will be in the repository:
+https://hub.docker.com/r/juangh15/gildedfront
