@@ -2,13 +2,9 @@
 FROM node:lts-alpine3.15
 COPY . .
 
-ARG API_URL_ARG
-ENV API_URL = API_URL_ARG
+ENV API_URL = 192.68.1.4:8080
 
 # Add the packages
 RUN npm install
-
-# Expose the default Gildedrose frontend port
-EXPOSE 4200
 
 CMD ["npm", "start"]
