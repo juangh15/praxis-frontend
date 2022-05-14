@@ -36,7 +36,7 @@ It is important to note that the step of creating the "backend_net" network ment
 To run the container it is necessary to define the parameters with which the connection to the API will be made. This only requires the command:
 
 ```
-docker run --name front-container --network backend_net --env API_URL=api-container -p 4200:4200 -d gildedfront
+docker run --name front-container --network backend_net --env API_IP=api-container --env API_PORT=8080 -p 4200:4200 -d gildedfront
 ```
 ##### EXPLANATION OF THE PARAMETERS:
 * "--name front-container": The name by which the container will be identified in this case will be "front-container".
@@ -45,7 +45,8 @@ docker run --name front-container --network backend_net --env API_URL=api-contai
 * "gildedfront": The name of the image builded.
 
 ##### EXPLANATION OF THE "--env" (environment variables):
-* "API_URL=api-container" : IP of the API to which the frontend will connect, in this case "api-container" is used because it is the name of the API container within the "backend_net" network.
+* "API_IP=api-container" : IP of the API to which the frontend will connect, in this case "api-container" is used because it is the name of the API container within the "backend_net" network.
+* "API_PORT=8080" : Port of the API to which the frontend will connect.
 
 #### 3 - Verify that the container is running:
 Wait a few minutes and the API will be exposed to the web address: 
