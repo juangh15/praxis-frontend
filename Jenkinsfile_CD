@@ -4,8 +4,8 @@ pipeline{
         stage('Stop Containers'){
             steps{
                sh '''
-                  docker stop api-container
-                  docker stop front-container
+                  docker stop api-container || true
+                  docker stop front-container || true
                   docker container prune -f
                '''
             }
