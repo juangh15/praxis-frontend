@@ -14,7 +14,7 @@ pipeline{
             steps{
                 sh '''
                   docker run --name api-container --network backend_net --env POSTGRES_IP=my-postgres --env POSTGRES_PORT=5432 --env POSTGRES_USER=postgres --env POSTGRES_PASSWORD=secret -p 8081:8080 -d juangh15/gildedrose-api
-                  docker run --name front-container --network backend_net --env API_IP=api-container --env API_PORT=8081 -p 4200:4200 -d juangh15/gildedfront
+                  docker run --name front-container --network backend_net --env API_IP=35.173.31.212 --env API_PORT=8081 -p 4200:4200 -d juangh15/gildedfront
                '''
             }
 
