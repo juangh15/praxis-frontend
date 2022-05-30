@@ -18,7 +18,7 @@ describe("Adding Items", () => {
   let expectedItemQuality: string;
 
   before(() => {
-    expectedItemName = "Chocorramo";
+    expectedItemName = "TEST_ITEM_0001";
     expectedItemQuality = "-20";
     itemsPage = new ItemsPage();
     itemsPage.visitItemsPage();
@@ -39,13 +39,13 @@ describe("Adding Items", () => {
     cy.focused().blur();
   });
 
-  // Asserts   TODO
+  // Asserts
 
   it("Then ADD button is Disabled", () => {
-    cy.get("[data-automation=\"item-form-confirm-button\"]").should("be.disabled");
+    itemsPage.checkAddItemButtonIsDisabled();
   });
 
   it("And \"Expected value between 0 and 80\" message is displayed on quality field", () => {
-    cy.get("#mat-error-0").should("have.text", " Expected value between 0 and 80 ");
+    itemsPage.checkErrorExpectedQualityValue();
   });
 });

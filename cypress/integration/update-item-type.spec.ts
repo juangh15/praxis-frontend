@@ -5,7 +5,7 @@
     Then the type name is updated in list view
     And The type amount is updated on INSIGHTS view
 */
-
+/* eslint-disable cypress/no-unnecessary-waiting */
 import {
   ItemsPage,
 } from "../page/items.page.ts";
@@ -17,13 +17,32 @@ describe("Updating Item", () => {
   let expectedItemName: string;
   let expectedItemSellIn: string;
   let expectedItemQuality: string;
+  let expectedItemType: string;
+  let expectedNewItemType: string;
+  let previousInsightNormalAmount: number;
+  let previousInsightAgedAmount: number;
 
   before(() => {
-    expectedItemName = "Chocorramo";
+    expectedItemName = "TEST_ITEM_0001";
     expectedItemSellIn = "30";
     expectedItemQuality = "20";
+    expectedItemType = "NORMAL";
+    expectedNewItemType = "AGED";
     itemsPage = new ItemsPage();
     itemsPage.visitItemsPage();
+
+    // Getting previous insights value
+    itemsPage.clickOnInsightsButton();
+    cy.wait(500);
+    cy.get(itemsPage.getInsightsNormalValue()).then(($btn) => {
+      previousInsightNormalAmount = parseInt($btn.text(), 10);
+    });
+
+    cy.get(itemsPage.getInsightsAgedValue()).then(($btn) => {
+      previousInsightAgedAmount = parseInt($btn.text(), 10);
+    });
+    itemsPage.clickOnGoBackInsightsButton();
+    cy.wait(500);
   });
 
   // Actions
@@ -34,37 +53,56 @@ describe("Updating Item", () => {
     itemsPage.fillOutItemSellIn(expectedItemSellIn);
     itemsPage.fillOutItemQuality(expectedItemQuality);
     itemsPage.openItemTypeSelector();
-    itemsPage.selectItemNormalOption();
+    itemsPage.selectItemTypeOption(expectedItemType);
     itemsPage.clickOnAddItem();
+    cy.wait(500);
   });
 
   it("When the user clicks on PEN button", () => {
-    itemsPage.clickOnEditButton();
+    itemsPage.clickOnPenButtonOfItem(
+      expectedItemName,
+      expectedItemSellIn,
+      expectedItemQuality,
+      expectedItemType,
+    );
   });
 
   it("And the user changes the item type", () => {
     itemsPage.openItemTypeSelector();
-    itemsPage.selectItemAgedOption();
+    cy.wait(100);
+    itemsPage.selectItemTypeOption(expectedNewItemType);
     itemsPage.clickOnUpdateItem();
+    cy.wait(500);
   });
 
   // Asserts   TODO
 
   it("Then the type name is updated in list view", () => {
-    cy.get(".list-container > div:nth-child(3) .list-col:nth-child(4)").should("have.text", "AGED");
+    itemsPage.checkIfItemExists(
+      expectedItemName,
+      expectedItemSellIn,
+      expectedItemQuality,
+      expectedNewItemType,
+    );
   });
 
   it("And The type amount is updated on INSIGHTS view", () => {
     itemsPage.clickOnInsightsButton();
-    cy.get("[data-automation=\"item-type-normal-value\"]").should("have.text", " 0 ");
-    cy.get("[data-automation=\"item-type-aged-value\"]").should("have.text", " 1 ");
+    itemsPage.checkInsightsNormalValue(previousInsightNormalAmount);
+    itemsPage.checkInsightsAgedValue(previousInsightAgedAmount + 1);
   });
 
-  after(()=>{
+  after(() => {
     itemsPage.clickOnGoBackInsightsButton();
+    // cy.wait(500);
+    itemsPage.clickOnCanButtonOfItem(
+      expectedItemName,
+      expectedItemSellIn,
+      expectedItemQuality,
+      expectedNewItemType,
+    );
     cy.wait(500);
-    itemsPage.clickOnCanButton();
     itemsPage.clickOnDeleteButton();
-    cy.wait(1000);
-  })
+    // cy.wait(1000);
+  });
 });

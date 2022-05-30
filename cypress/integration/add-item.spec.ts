@@ -6,6 +6,7 @@
     Then The items is displayed on list view
     And The information set is displayed according to added in creation step.
 */
+/* eslint-disable cypress/no-unnecessary-waiting */
 import {
   ItemsPage,
 } from "../page/items.page.ts";
@@ -17,11 +18,13 @@ describe("Adding Items", () => {
   let expectedItemName: string;
   let expectedItemSellIn: string;
   let expectedItemQuality: string;
+  let expectedItemType: string;
 
   before(() => {
-    expectedItemName = "Chocorramo";
+    expectedItemName = "TEST_ITEM_0001";
     expectedItemSellIn = "30";
     expectedItemQuality = "20";
+    expectedItemType = "NORMAL";
     itemsPage = new ItemsPage();
     itemsPage.visitItemsPage();
   });
@@ -37,33 +40,37 @@ describe("Adding Items", () => {
     itemsPage.fillOutItemSellIn(expectedItemSellIn);
     itemsPage.fillOutItemQuality(expectedItemQuality);
     itemsPage.openItemTypeSelector();
-    itemsPage.selectItemNormalOption();
+    itemsPage.selectItemTypeOption(expectedItemType);
   });
 
   it("And the user clicks on ADD button", () => {
     itemsPage.clickOnAddItem();
+    cy.wait(500);
   });
 
-  // Asserts   TODO
+  // Asserts
 
   it("Then The items is displayed on list view", () => {
-    cy.get("[data-automation=\"list-insights-button\"]").should("have.text", " Insights ");
+    itemsPage.checkAtLeastOneItemExist();
   });
 
   it("And The information set is displayed according to added in creation step", () => {
-    cy.get('[data-automation="list-item-row"]').last().find('div').should(($lista)=>{
-      expect($lista.eq(0), 'first item').to.contain('Chocorramo')
-      expect($lista.eq(1), 'second item').to.contain('30')
-      expect($lista.eq(2), 'third item').to.contain('20')
-      expect($lista.eq(3), 'fourth item').to.contain('NORMAL')
-
-    })
+    itemsPage.checkIfItemExists(
+      expectedItemName,
+      expectedItemSellIn,
+      expectedItemQuality,
+      expectedItemType,
+    );
   });
 
-  after(()=>{
-    itemsPage.clickOnCanButton();
+  after(() => {
+    itemsPage.clickOnCanButtonOfItem(
+      expectedItemName,
+      expectedItemSellIn,
+      expectedItemQuality,
+      expectedItemType,
+    );
+    cy.wait(500);
     itemsPage.clickOnDeleteButton();
-    cy.wait(1000);
-  })
-
+  });
 });
