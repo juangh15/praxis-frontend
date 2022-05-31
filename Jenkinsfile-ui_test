@@ -1,6 +1,11 @@
 pipeline {
     agent any
     stages{
+        stage('Set TERM'){
+          steps {
+            sh "TERM=dumb"
+          }
+        }
         stage('Install dependencies') {
             steps {
                 sh '''
