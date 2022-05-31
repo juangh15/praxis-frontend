@@ -2,7 +2,7 @@ pipeline {
     agent any
     stages{
         stage('Install dependencies') {
-            step {
+            steps {
                 sh '''
                     npm install mocha mochawesome cypress-mochawesome-reporter --save-dev
                     npm install cypress-multi-reporters --save-dev
@@ -13,7 +13,7 @@ pipeline {
         }
 
         stage('Run cypress tests') {
-            step {
+            steps {
                 sh "npm test"
             }
         }
