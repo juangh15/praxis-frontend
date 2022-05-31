@@ -9,7 +9,9 @@
     "test": "cypress run",
     "test:open": "npm run lint -- --fix && npm run lint && cypress open",
     "lint": "eslint ./cypress/integration/**/*.ts",
-    "lint:fix": "npm run lint -- --fix"
+    "lint:fix": "npm run lint -- --fix",
+    "combine-reports": "mochawesome-merge cypress/reports/mocha/*.json > cypress/reports/report.json",
+    "generate-report": "marge cypress/reports/report.json -f report -o cypress/reports"
   },
   "private": true,
   "dependencies": {
