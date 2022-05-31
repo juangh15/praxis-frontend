@@ -1,0 +1,21 @@
+pipeline {
+    agent any
+    stages{
+        stage('Install dependencies') {
+            step {
+                sh '''
+                    npm install mocha mochawesome cypress-mochawesome-reporter --save-dev
+                    npm install cypress-multi-reporters --save-dev
+                    npm install mochawesome-merge --save-dev
+                    npm install mochawesome-report-generator --save-dev
+                '''
+            }
+        }
+
+        stage('Run cypress tests') {
+            step {
+                sh "npm test"
+            }
+        }
+    }
+}
