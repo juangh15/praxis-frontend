@@ -22,7 +22,7 @@ class ItemsPage {
     private goBackInsightsButton: string;
 
     constructor() {
-        this.indexItemsPageURL = 'http://localhost:4200'
+        this.indexItemsPageURL = 'http://3.233.167.141:4200'
         this.menuAddItemButton = '.list-add-button';
         this.itemRow = "[data-automation=\"list-item-row\"]";
         this.itemNameField = '[formcontrolname="name"]';
