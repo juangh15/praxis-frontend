@@ -28,5 +28,18 @@ pipeline {
                 '''
             }
         }
+        
+        stage('Publish test report') {
+            steps {
+                publishHTML (target : [allowMissing: false,
+                 alwaysLinkToLastBuild: true,
+                 keepAll: true,
+                 reportDir: '/var/lib/jenkins/workspace/ci-ui_test/cypress/reports',
+                 reportFiles: 'report.html',
+                 reportName: 'Cypress report',
+                 reportTitles: 'Cypress report'])   
+            }
+            
+        }
     }
 }
