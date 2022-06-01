@@ -159,10 +159,10 @@ class ItemsPage {
       .parent()
       .within(() => {
         // All searches are automatically rooted to the specific item row
-        cy.get('div').eq(0).contains(name)
-        cy.get('div').eq(1).contains(sellIn)
-        cy.get('div').eq(2).contains(quality)
-        cy.get('div').eq(3).contains(type)
+        //cy.get('div').eq(0).contains(name)
+        //cy.get('div').eq(1).contains(sellIn)
+        //cy.get('div').eq(2).contains(quality)
+        //cy.get('div').eq(3).contains(type)
         cy.get('div').eq(4).children().eq(1).click()
       })
     }
@@ -173,10 +173,10 @@ class ItemsPage {
       .parent()
       .within(() => {
         // All searches are automatically rooted to the specific item row
-        cy.get('div').eq(0).contains(name)
-        cy.get('div').eq(1).contains(sellIn)
-        cy.get('div').eq(2).contains(quality)
-        cy.get('div').eq(3).contains(type)
+        //cy.get('div').eq(0).contains(name)
+        //cy.get('div').eq(1).contains(sellIn)
+        //cy.get('div').eq(2).contains(quality)
+        //cy.get('div').eq(3).contains(type)
         cy.get('div').eq(4).children().eq(0).click()
       })
     }

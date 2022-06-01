@@ -18,7 +18,7 @@ describe("Adding Items", () => {
   let expectedItemQuality: string;
 
   before(() => {
-    expectedItemName = "TEST_ITEM_0001";
+    expectedItemName = "TEST_ITEM_0001_ADD";
     expectedItemQuality = "-20";
     itemsPage = new ItemsPage();
     itemsPage.visitItemsPage();

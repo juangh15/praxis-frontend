@@ -21,7 +21,7 @@ describe("Adding Items", () => {
   let expectedItemType: string;
 
   before(() => {
-    expectedItemName = "TEST_ITEM_0001";
+    expectedItemName = "TEST_0001_ADD";
     expectedItemSellIn = "30";
     expectedItemQuality = "20";
     expectedItemType = "NORMAL";
@@ -40,17 +40,18 @@ describe("Adding Items", () => {
     itemsPage.fillOutItemSellIn(expectedItemSellIn);
     itemsPage.fillOutItemQuality(expectedItemQuality);
     itemsPage.openItemTypeSelector();
+    // cy.wait(1000);
     itemsPage.selectItemTypeOption(expectedItemType);
   });
 
   it("And the user clicks on ADD button", () => {
     itemsPage.clickOnAddItem();
-    cy.wait(500);
   });
 
   // Asserts
 
   it("Then The items is displayed on list view", () => {
+    // cy.wait(1000);
     itemsPage.checkAtLeastOneItemExist();
   });
 
@@ -72,5 +73,6 @@ describe("Adding Items", () => {
     );
     cy.wait(500);
     itemsPage.clickOnDeleteButton();
+    cy.wait(2000);
   });
 });
