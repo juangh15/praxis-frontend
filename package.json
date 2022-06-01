@@ -6,6 +6,7 @@
     "start": "ng serve --host 0.0.0.0 --proxy-config proxy.config.js",
     "build": "ng build",
     "watch": "ng build --watch --configuration development ",
+    "pretest": "rm -fr cypress/reports"
     "test": "cypress run --headless",
     "test:open": "npm run lint -- --fix && npm run lint && cypress open",
     "lint": "eslint ./cypress/integration/**/*.ts",
