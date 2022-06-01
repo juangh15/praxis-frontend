@@ -21,6 +21,7 @@ pipeline {
         stage('Run cypress tests') {
             steps {
                 sh '''
+                    npm run pretest
                     npm test
                     npm run combine-reports
                     npm run generate-report
