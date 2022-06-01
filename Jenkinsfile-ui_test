@@ -20,7 +20,11 @@ pipeline {
 
         stage('Run cypress tests') {
             steps {
-                sh "npm test"
+                sh '''
+                    npm test
+                    npm combine-reports
+                    npm generate-report
+                '''
             }
         }
     }
