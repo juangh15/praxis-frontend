@@ -22,8 +22,8 @@ pipeline {
             steps {
                 sh '''
                     npm test
-                    npm combine-reports
-                    npm generate-report
+                    npm run combine-reports
+                    npm run generate-report
                 '''
             }
         }
