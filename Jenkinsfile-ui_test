@@ -29,9 +29,10 @@ pipeline {
             }
         }
         
-        stage('Publish test report') {
-            steps {
-                publishHTML (target : [allowMissing: false,
+       } 
+       post {
+        always {
+        publishHTML (target : [allowMissing: false,
                  alwaysLinkToLastBuild: true,
                  keepAll: true,
                  reportDir: '/var/lib/jenkins/workspace/ci-ui_test/cypress/reports',
@@ -39,12 +40,6 @@ pipeline {
                  reportName: 'Cypress report',
                  reportTitles: 'Cypress report'])   
                 sh "zip -r CypressTesting.zip cypress/reports/"
-            }
-            
-        }
-       } 
-       post {
-        always {
             emailext attachmentsPattern: '**/CypressTesting.zip', body: 'This is a test email', mimeType: 'text/html', subject: 'Build $BUILD_NUMBER - $BUILD_STATUS', to: 'grupo3.praxis@outlook.com'
         }
         
