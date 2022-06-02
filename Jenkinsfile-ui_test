@@ -38,8 +38,17 @@ pipeline {
                  reportFiles: 'report.html',
                  reportName: 'Cypress report',
                  reportTitles: 'Cypress report'])   
+                sh "zip -r CypressTesting.zip cypress/reports/"
+                slackSend message:"You can acces by clicking http://3.233.167.141:8080/job/ci-ui_test/$BUILD_NUMBER/Cypress_20report/"
             }
             
         }
+        
+       post {
+        always {
+            slackUploadFile filePath: 'CypressTesting.zip', initialComment: 'This the test report for Build $BUILD_NUMBER', credentialId: 'slackCredential'
+            emailext attachmentsPattern: '**/CypressTesting.zip', body: 'This is a test email', mimeType: 'text/html', subject: 'Build $BUILD_NUMBER - $BUILD_STATUS', to: 'grupo3.praxis@outlook.com'
+        }   
+      }
     }
 }
