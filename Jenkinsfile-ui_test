@@ -31,10 +31,10 @@ pipeline {
        } 
        post {
         always {
-        sh```
+        sh '''
           npm run combine-reports
           npm run generate-report
-        ```
+        '''
         publishHTML (target : [allowMissing: false,
                  alwaysLinkToLastBuild: true,
                  keepAll: true,
