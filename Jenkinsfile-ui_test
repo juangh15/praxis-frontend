@@ -23,8 +23,7 @@ pipeline {
                 sh '''
                     npm run pretest
                     npm test
-                    npm run combine-reports
-                    npm run generate-report
+                    
                 '''
             }
         }
@@ -32,6 +31,10 @@ pipeline {
        } 
        post {
         always {
+        sh```
+          npm run combine-reports
+          npm run generate-report
+        ```
         publishHTML (target : [allowMissing: false,
                  alwaysLinkToLastBuild: true,
                  keepAll: true,
